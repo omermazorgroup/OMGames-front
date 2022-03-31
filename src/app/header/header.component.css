@@ -1,0 +1,47 @@
+span {
+  display: flex;
+}
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+}
+
+button {
+  font-family: "Shippori Antique B1", sans-serif;
+}
+
+mat-toolbar {
+  margin-bottom: 10px;
+  box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+p {
+  font-family: "Dancing Script", cursive;
+  color: #000;
+  text-indent: 5px;
+  font-size: 16px;
+  font-weight: 900;
+}
+@media screen and (max-width: 800px) {
+  button {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,98 @@
+@font-face{
+  font-family: 'e';
+  src: url("fonts/Courgette-Regular.ttf");
+}
+@font-face{
+  font-family: 'a';
+  src: url("fonts/CaviarDreams.ttf");
+}
+mat-form-field,
+textarea{
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+mat-card{
+  margin-bottom: 1em;
+  background:
+  linear-gradient(rgb(0, 238, 255, 0.6), transparent),
+  linear-gradient(to top left, rgb(255, 0, 179, 0.2), transparent),
+  linear-gradient(to top right, rgb(255, 230, 0, 0.5), transparent);
+  background-blend-mode: screen;
+
+}
+
+mat-checkbox {
+  margin-bottom: 1em;
+}
+
+
+input[type="file"]{
+  visibility: hidden;
+}
+
+
+
+.image-preview img {
+  height: 100%;
+}
+
+mat-radio-button{
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+h2 {
+  font-family: e;
+  margin-left: 0.5em;
+  font-weight: bold;
+}
+.turbo {
+  display: inline;
+}
+h1 {
+  font-family: a;
+}
+@media only screen and (max-width: 550px) {
+  h2 {
+    font-size:2.7vw;
+  }
+}
+i{
+  font-size: 35px;
+  color: orange;
+  animation: beat 1s infinite alternate;
+}
+
+@keyframes beat{
+  0%   {transform: rotate(-2deg);}
+  20%  {transform: rotate(2deg);}
+  40%  {transform: rotate(-2deg);}
+  60%  {transform: rotate(1deg) scaleY(1.04);}
+  80%  {transform: rotate(-2deg) scaleY(0.92);}
+  100% {transform: rotate(5deg);}
+}
+
+span {
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  font-weight: bold;
+}
+p {
+  font-family: a;
+  font-weight: bold;
+}
+button {
+  margin-bottom: 1em;
+}
+img {
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 400px;
+}
+

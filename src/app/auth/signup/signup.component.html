@@ -1,0 +1,57 @@
+<div class="signupContainer">
+  <mat-card *ngIf="isVerify">
+   <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+ <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+   <mat-form-field >
+     <input  matInput type="text" name="username" ngModel placeholder="User Name" #emailInput="ngModel"  required>
+     <mat-error *ngIf="emailInput.invalid"> Please enter available username (starts with a letter) </mat-error>
+    </mat-form-field>
+    <mat-form-field style="background: rgb(211, 211, 211);border-radius: 10px;">
+      <input  matInput type="text" name="address" ngModel placeholder="Wallet Adress" #addressInput="ngModel"  required>
+      <mat-error *ngIf="addressInput.invalid"> Please enter your wallet address! </mat-error>
+    </mat-form-field>
+    <div>
+      <p style="color: red;">
+        Note! Please paste here <b>only </b> your <b> SHIB BEP20</b> wallet address on <b>Binance</b> perfectly for make sure the coins will be sent to the right place
+      </p>
+      <p>To find your SHIB BEP20 wallet address on binance for deposits, open: <a href="https://www.binance.com/en/my/wallet/account/main/deposit/crypto/SHIB">this link</a> </p>
+    </div>
+   <mat-form-field>
+     <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+     <mat-error *ngIf="passwordInput.invalid"> Please enter a valid password. </mat-error>
+   </mat-form-field>
+   <mat-form-field>
+     <input type="password" name="password2" ngModel matInput placeholder="Confirm password" #passwordInput="ngModel" required>
+     <mat-error *ngIf="passwordInput.invalid"> Please confirm your password. </mat-error>
+   </mat-form-field>
+   <ul>
+     <li *ngFor="let error of errors">{{error}}</li>
+   </ul>
+   <button mat-raised-button color="accent" mat-raised-button type="submit" *ngIf="!isLoading"> Signup </button>
+ </form>
+ </mat-card>
+
+
+
+ <mat-card *ngIf="!isVerify">
+   <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+   <p *ngIf="isSend">{{timer}}</p>
+ <form  (submit)="onEmail(signupForm)" #signupForm="ngForm" *ngIf="!isSend && !isLoading">
+   <mat-form-field >
+    <input (keyup)="text =''" matInput type="email" name="email" ngModel placeholder="Enter your Email" #emailInput="ngModel" required email>
+   <mat-error *ngIf="emailInput.invalid"> Please enter a valid email. </mat-error>
+ </mat-form-field>
+ <p style="color: red;font-size: 10px;">{{text}}</p>
+   <button mat-raised-button color="accent" mat-raised-button type="submit"> Next </button>
+ </form>
+
+ <form  (submit)="onVerify(signupForm)"  #signupForm="ngForm" *ngIf="isSend">
+   <h1 style="font-family: a;">Verify your email address</h1>
+   <mat-form-field >
+    <input matInput type="number" name="random" ngModel placeholder="Please enter the code we sent to your email" #emailInput="ngModel" required>
+     <mat-hint style="color: red;">{{text}}</mat-hint>
+   </mat-form-field>
+   <button mat-raised-button color="accent" mat-raised-button type="submit"> Verify! </button>
+ </form>
+ </mat-card>
+ </div>

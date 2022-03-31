@@ -1,0 +1,107 @@
+
+<div class="container">
+  <div class="left-aside">
+    <div class="score-card">
+      <div  class="bg-success" style="margin-top: 2px;width: 100%;padding: 2px;color: white;">
+        <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5994.png" alt="">
+        <h2 style="font-family: 'Merriweather', serif;align-self: center;font-weight: 900;">Shib Snake</h2>
+     </div>
+     <div style="margin: 5px;">
+      <h3 class="bold" style="font-family: 'Lato', sans-serif;" *ngIf="!authService.isAuthenticated">Number of users: <span style="padding: 10px;font-size: 20px;font-weight: 900;font-family: 'Courier New', Courier, monospace;">{{users?.length}} </span> <br> Website views: {{gameService.views}}</h3>
+      <div class="bold" *ngIf="authService.isAuthenticated">
+          <h2 style="font-family: 'Lato', sans-serif;" *ngIf="authService.user"> Hello {{authUser!.username}}!</h2>
+          <p>Your wallet address: <span  style="background: rosybrown;">{{authUser?.address}}</span> </p>
+          <button class="btn btn-success" (click)="toggleEditForm()"><i class="fas fa-edit"></i> Edit </button>
+      </div>
+
+      <mat-card *ngIf="isEdit">
+          <form *ngIf="!isEditSend" (submit)="onEdit(editForm)" #editForm="ngForm">
+              <mat-form-field style="background: rgb(211, 211, 211);border-radius: 10px;">
+                  <input [(ngModel)]="authUser!.address" matInput type="text" name="address" ngModel placeholder="Wallet Adress" #addressInput="ngModel" required>
+                  <mat-error *ngIf="addressInput.invalid"> Please enter your wallet address! </mat-error>
+              </mat-form-field>
+              <div>
+                  <p style="color: red;">
+                    Note! Please paste here <b>only </b> your <b> SHIB BEP20</b> wallet address on <b>Binance</b> perfectly for make sure the coins will be sent to the right place
+                  </p>
+              </div>
+              <button mat-raised-button color="accent" mat-raised-button type="submit" > Edit </button>
+          </form>
+          <p *ngIf="isEditSend" style="color: green;"><i class="fas fa-check"></i> Wallet address is successfully updated!</p>
+      </mat-card>
+      <div class="score-board">
+        <h2 >Score: {{food?.currentScore}}</h2>
+
+      </div>
+      <div class="bold">
+          <p><span class="text-success">The next prize <span matTooltip="The prize is calculated as follows: 250 + (Website views × 0.001) in EUR" style="text-decoration: underline;color: blue;cursor: pointer;">?</span> is:</span>  <br> {{gameService.prize}}EUR ≈ <span id="stock-price">---</span></p>
+          <div  *ngIf="winner; else timerDisplay">The Winner Is: {{winner?.username}}</div>
+          <ng-template #timerDisplay>
+              <span class="text-success">in:</span>
+              <p class=""  style="text-indent: 2px;">02/04/2022,</p>
+              <p  id="timer" [innerHTML]="time"></p>
+          </ng-template>
+      </div>
+
+      <hr style="margin: auto;width: 80%;">
+
+      <div class="game-help-board">
+
+          <button  class="restart-button btn btn-success" (click)="restart()">
+              RESTART
+          </button>
+       </div>
+     </div>
+
+    </div>
+    <mat-card class="game-details">
+      <mat-card-title> <i class="fas fa-question text-success"></i> About:</mat-card-title>
+      <mat-card-content>
+          <p>
+            <span *ngIf="!authService.isAuthenticated">
+              In order to play and also earn, you must <a routerLink="/auth/signup">sign up </a> with a quick registration.
+            </span>
+            <br>
+            <br>
+            On the date indicated above, if necessary, the prize will
+            be sent directly to your wallet by the address you entered,
+            please <b class="text-danger">make sure the address is yours.</b>
+          </p>
+
+      </mat-card-content>
+      <mat-card-title> <i class="fas fa-exclamation text-danger"></i> Note:</mat-card-title>
+      <mat-card-content>
+          <p>
+            An account that is identified as trying to hack into the website will be permanently blocked.
+          </p>
+
+      </mat-card-content>
+  </mat-card>
+  </div>
+
+  <div>
+
+    <div class="game-board border">
+
+
+    </div>
+  </div>
+
+
+  <div class="game-over" *ngIf="gameOver">
+    <h1>Game Over</h1>
+  </div>
+
+  <!-- <div class="mobile-controls">
+    <nav class="o-pad">
+      <a class="up" (click)="dpadMovement('ArrowUp')"></a>
+      <a class="right" (click)="dpadMovement('ArrowRight')"></a>
+      <a class="down" (click)="dpadMovement('ArrowDown')"></a>
+      <a class="left" (click)="dpadMovement('ArrowLeft')"></a>
+    </nav>
+  </div> -->
+
+
+
+</div>
+

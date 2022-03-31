@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather:wght@300&family=Poppins:wght@100;300&family=Shippori+Antique+B1&family=Ubuntu:wght@500&family=Roboto:wght@100;500&family=Ruda:wght@500;900&display=swap");
+
+You can add global styles to this file,
+and also import other style files html,
+body {
+  height: 100%;
+  /* // max-height: 100vh;
+  // overflow: hidden; */
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #282846;
+  --board-color: #ffffff;
+  --snake-color: #1e7e34 !important;
+  --food-color: yellow;
+
+  --dpad-radius: 17%;
+  --dpad-radius-in: 20%;
+  --dpad-fg: #ddd;
+  --dpad-fg-hover: #eee;
+  --dpad-bg: #fff;
+  --arrowcolor: #aaa;
+  --tri-sml-a: 13px;
+  --tri-sml-b: 19px;
+  --tri-lrg-a: 13px;
+  --tri-lrg-b: 19px;
+  --dpad-arrow-shift: 5px;
+  --dpad-arrow-move: 35%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: "Anton", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.snake {
+  border-radius: 50%;
+  background-color: var(--snake-color);
+  border: 0.25vmin solid black;
+  transition: all 0.3ms ease-in;
+}
+
+.food {
+  background-repeat: no-repeat;
+  background-size: 150%;
+  background-position: center;
+  background-image: url("https://s2.coinmarketcap.com/static/img/coins/64x64/5994.png");
+  background-color: transparent;
+  transition: all 0.3ms ease-in;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1e7e34;
+  border-radius: 10px;
+}

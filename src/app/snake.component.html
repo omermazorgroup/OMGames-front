@@ -1,0 +1,13 @@
+<div class="flex" style="width: 100%;">
+  <app-game-board
+  [users]="authService.users"
+  [authUser]="authService.user"
+  [winner]="authService.winner">
+  </app-game-board>
+  <div style="width: 100%;margin: 2px;">
+    <app-table
+    [users]="authService.users"
+    [authUser]="authService.user">
+    </app-table>
+  </div>
+</div>

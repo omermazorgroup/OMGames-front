@@ -1,0 +1,41 @@
+<mat-spinner style="margin: auto;" color="accent" *ngIf="authService.usersLoading"></mat-spinner>
+<div class="mobileAlert" style="font-family: 'Poppins', sans-serif;">
+  <h1 style="font-family: 'Poppins', sans-serif;">PC only...</h1>
+  <p class="text-success">Log in to the website from your personal computer and play now!
+    <br>
+    Meanwhile, if you don't have an account, <a style="background: forestgreen;color: white;" mat-stroked-button routerLink="/auth/signup">Sign Up</a> and be a part!
+  </p>
+</div>
+<div style="height: calc(80vh - 100px);overflow: scroll;overflow-x: hidden;">
+  <table *ngIf="!authService.usersLoading" id="items">
+    <tr class="bg-success">
+      <th></th>
+      <th>Name</th>
+      <th>Score</th>
+    </tr>
+
+    <tr [ngStyle]="
+    {'border': authUser && (authUser?.rank < 50 && user.username == authUser?.username) ? '2px solid black': 'none', 'background': i === 0 ? 'gold': i === 1 ? 'silver': i === 2 ? '#d4a96b': 'auto'}" *ngFor="let user of users;let i = index" >
+      <td style="font-weight: 900;">{{user.rank}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.score}}
+        <span *ngIf="i === 0"> 🥇 {{gameService.prize}}EUR</span>
+        <span *ngIf="i === 1"> 🥈 {{gameService.second}}EUR</span>
+        <span *ngIf="i === 2"> 🥉 {{gameService.third}}EUR</span>
+      </td>
+    </tr>
+  <!-- <p>{{authService.isAuthenticated}} {{authUser?.rank}}</p> -->
+
+    <!-- <tr>
+      <td>February</td>
+      <td>$80</td>
+    </tr> -->
+  </table>
+</div>
+<table id="items">
+  <tr style="border: 1px solid black;font-weight: 900;"   *ngIf="authService.isAuthenticated && authService.userLevel && authService.users">
+    <td>{{authService.userLevel[0].rank}}</td>
+    <td>You</td>
+    <td>{{authService.userLevel[0].score}}</td>
+  </tr>
+</table>
